@@ -19,6 +19,7 @@ namespace Aula01
         private double valor = 0;
         private String str = "";
         private String strEquacao = "";
+        private List<String> listEquacao = new List<string>();
 
         private void btnSoma_Click(object sender, EventArgs e) 
         {
@@ -32,8 +33,8 @@ namespace Aula01
                 this.strEquacao += str;
             }
 
-            this.strEquacao += this.valor;
 
+            this.strEquacao += this.valor;
             if (str != "+")
             {
                 str = "+";
@@ -44,11 +45,13 @@ namespace Aula01
                 
                 valor += double.Parse(txtValor1.Text);
                 txtValor1.Text = "";
-                str = "+";
+               
+
 
             }
-            
-            lblEquacao.Text = this.strEquacao;
+
+            lblEquacao.Text = this.valor.ToString() + str;
+
         }
 
         private void btnSubtracao_Click(object sender, EventArgs e)
@@ -62,9 +65,8 @@ namespace Aula01
             {
                 this.strEquacao += str;
             }
-
-            
             this.strEquacao += this.valor;
+
             if (str != "-")
             {
                 str = "-";
@@ -72,12 +74,14 @@ namespace Aula01
             }
             else
             {
+
+                
                 valor -= double.Parse(txtValor1.Text);
                 txtValor1.Text = "";
                 str = "-";
             }
-          
-            lblEquacao.Text = this.strEquacao;
+
+            lblEquacao.Text = this.valor.ToString() + str;
         }
 
 
@@ -103,8 +107,8 @@ namespace Aula01
                 txtValor1.Text = "";
                 str = "*";
             }
-         
-            lblEquacao.Text = this.strEquacao;
+
+            lblEquacao.Text = this.valor.ToString() + str;
         }
 
         private void btnDivisao_Click(object sender, EventArgs e)
@@ -129,8 +133,8 @@ namespace Aula01
                 txtValor1.Text = "";
                 str = "/";
             }
-         
-            lblEquacao.Text = this.strEquacao;
+
+            lblEquacao.Text = this.valor.ToString() + str;
         }
 
         private void btnPorcent_Click(object sender, EventArgs e)
@@ -155,8 +159,8 @@ namespace Aula01
                 txtValor1.Text = "";
                 str = "%";
             }
-            
-            lblEquacao.Text = this.strEquacao;
+
+            lblEquacao.Text = this.valor.ToString() + str;
         }
 
         private void btnRaiz_Click(object sender, EventArgs e)
@@ -180,14 +184,14 @@ namespace Aula01
                 x = Math.Sqrt(x);
                 txtValor1.Text = x.ToString();
             }
-           
-            lblEquacao.Text = this.strEquacao;
+
+            lblEquacao.Text = this.valor.ToString() + str;
         }
 
         private void btnResult_Click(object sender, EventArgs e)
         {
 
-            lblEquacao.Text = this.strEquacao += this.str + txtValor1.Text;
+            this.strEquacao += this.str + txtValor1.Text + "=";
             if (str.Equals("+"))
             {
                 
@@ -227,7 +231,9 @@ namespace Aula01
             {
                 txtValor1.Text = "Nao encontrado";
             }
-            
+            lblEquacao.Text = this.strEquacao + this.valor;
+            this.listEquacao.Add(this.strEquacao);
+            this.strEquacao = "";
         }
 
         private void btnClear_Click(object sender, EventArgs e)
